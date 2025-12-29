@@ -5,194 +5,253 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BIG092-SPACE | Web3 Creative Community</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Vercel Analytics (HTML-compatible) -->
+  <script defer src="/_vercel/analytics/script.js"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-main: #0a0d1a;
-      --bg-glass: rgba(255, 255, 255, 0.08);
+      --bg: #060814;
+      --glass: rgba(255,255,255,0.08);
       --accent1: #7cf5ff;
-      --accent2: #a78bfa;
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --border-glass: rgba(255,255,255,0.15);
+      --accent2: #b18cff;
+      --text: #e6e7eb;
+      --muted: #9aa0b4;
+      --border: rgba(255,255,255,0.15);
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
       font-family: 'Inter', sans-serif;
     }
 
     body {
-      background: radial-gradient(circle at top, #12172b, var(--bg-main));
-      color: var(--text-main);
+      background: radial-gradient(circle at top, #121633, var(--bg));
+      color: var(--text);
       min-height: 100vh;
     }
 
     header {
-      padding: 90px 20px 70px;
+      padding: 90px 20px;
       text-align: center;
     }
 
     header h1 {
-      font-size: 3.8rem;
-      font-weight: 800;
+      font-size: 4rem;
+      font-weight: 900;
       background: linear-gradient(90deg, var(--accent1), var(--accent2));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      letter-spacing: 1px;
     }
 
     header p {
-      margin-top: 22px;
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 850px;
+      margin-top: 20px;
+      max-width: 900px;
       margin-inline: auto;
+      color: var(--muted);
+      font-size: 1.15rem;
       line-height: 1.7;
     }
 
-    section {
-      padding: 70px 20px;
-      max-width: 1200px;
-      margin: auto;
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 35px;
+      flex-wrap: wrap;
     }
 
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 35px;
-      text-align: center;
+    nav a {
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      color: var(--accent1);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      transform: translateY(-3px);
+      background: rgba(124,245,255,0.15);
+    }
+
+    .search {
+      margin: 40px auto;
+      max-width: 500px;
+      display: flex;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      color: var(--text);
+    }
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 70px 20px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 26px;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 28px;
     }
 
     .card {
-      background: var(--bg-glass);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--border-glass);
-      border-radius: 22px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 24px;
       padding: 32px;
-      transition: all 0.35s ease;
+      backdrop-filter: blur(20px);
+      transition: 0.35s;
+      cursor: pointer;
     }
 
     .card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 25px 50px rgba(0,0,0,0.45);
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      margin-bottom: 14px;
-      background: rgba(124,245,255,0.18);
-      color: var(--accent1);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
     }
 
     .card h3 {
-      margin-bottom: 14px;
       color: var(--accent1);
+      margin-bottom: 14px;
     }
 
     .card p {
-      color: var(--text-muted);
-      line-height: 1.65;
+      color: var(--muted);
+      line-height: 1.6;
       font-size: 0.95rem;
     }
 
+    /* AI ASSISTANT */
+    .ai-box {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 320px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 20px;
+      backdrop-filter: blur(20px);
+    }
+
+    .ai-box h4 {
+      color: var(--accent2);
+      margin-bottom: 10px;
+    }
+
+    .ai-box textarea {
+      width: 100%;
+      height: 80px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      padding: 10px;
+      resize: none;
+    }
+
+    .ai-box button {
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color: #000;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
     footer {
-      border-top: 1px solid var(--border-glass);
-      padding: 45px 20px;
       text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
       font-size: 0.85rem;
-      color: var(--text-muted);
     }
 
     footer a {
       color: var(--accent1);
-      margin: 0 12px;
       text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
+      margin: 0 10px;
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <header>
-    <h1>BIG092-SPACE</h1>
-    <p>
-      A futuristic Web3 creative community where builders, designers, marketers,
-      and meme creators collaborate to solve content, branding, and visual challenges
-      across the blockchain ecosystem.
-    </p>
-  </header>
+<header>
+  <h1>BIG092-SPACE</h1>
+  <p>
+    A spectacular Web3 creative community where builders, designers, and meme creators
+    collaborate to solve content, branding, and growth challenges across decentralized
+    and centralized blockchain ecosystems.
+  </p>
 
-  <!-- COMMUNITY PURPOSE -->
-  <section>
-    <h2 class="section-title">What We Do</h2>
-    <div class="grid">
-      <div class="card">
-        <span class="badge">🎨 Creativity</span>
-        <h3>Memes & Graphics</h3>
-        <p>
-          Design viral crypto memes, token visuals, NFT artwork, pitch decks,
-          social media creatives, and brand identities for Web3 projects.
-        </p>
-      </div>
+  <nav>
+    <a href="#memes">Memes</a>
+    <a href="#graphics">Graphics</a>
+    <a href="#tokens">Tokens</a>
+    <a href="#ai">AI Assistant</a>
+    <a href="#about">About</a>
+  </nav>
 
-      <div class="card">
-        <span class="badge">🧠 Collaboration</span>
-        <h3>Community Problem Solving</h3>
-        <p>
-          A space where Web3 founders and creators bring challenges and
-          collaborate on solutions for content growth and audience engagement.
-        </p>
-      </div>
+  <div class="search">
+    <input type="text" placeholder="Search Web3 topics, tokens, memes, tools..." />
+  </div>
+</header>
 
-      <div class="card">
-        <span class="badge">🚀 Adoption</span>
-        <h3>Content for Growth</h3>
-        <p>
-          Simplifying complex blockchain concepts into clear, engaging
-          visuals that drive user onboarding and ecosystem adoption.
-        </p>
-      </div>
+<section id="tokens">
+  <div class="grid">
+    <div class="card">
+      <h3>Decentralized Tokens (DEX)</h3>
+      <p>Ethereum, Solana, Polygon, Arbitrum, Optimism, Avalanche, DAO tokens, DeFi, NFTs, Layer-2s.</p>
     </div>
-  </section>
+    <div class="card">
+      <h3>Centralized Tokens (CEX)</h3>
+      <p>Binance, Coinbase, OKX, KuCoin, Bybit tokens including utility, governance, and meme coins.</p>
+    </div>
+    <div class="card">
+      <h3>Wallets & Security</h3>
+      <p>MetaMask, Phantom, Trust Wallet, WalletConnect, hardware wallets and secure UX.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- WEB3 INFORMATION -->
-  <section>
-    <h2 class="section-title">Web3 Ecosystem Coverage</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Decentralized Tokens (DEX)</h3>
-        <p>
-          Ethereum (ETH), Solana (SOL), Polygon (MATIC), Arbitrum, Optimism,
-          Avalanche, BNB Chain, DAO governance tokens, DeFi protocols,
-          Layer-2 solutions, NFTs, and on-chain ecosystems.
-        </p>
-      </div>
+<section id="about">
+  <div class="card">
+    <h3>About BIG092-SPACE</h3>
+    <p>
+      Developer: <strong>†Ifenna†</strong><br/>
+      X (Twitter): <a href="https://x.com/BIG092BOA" target="_blank">@BIG092BOA</a><br/>
+      Focus: Web3 Creativity · Meme Culture · AI-Powered Content
+    </p>
+  </div>
+</section>
 
-      <div class="card">
-        <h3>Centralized Tokens (CEX)</h3>
-        <p>
-          Tokens traded on centralized exchanges such as Binance, Coinbase,
-          OKX, Bybit, KuCoin, and Kraken — including utility tokens,
-          governance tokens, and meme coins.
-        </p>
-      </div>
+<!-- AI ASSISTANT -->
+<div class="ai-box" id="ai">
+  <h4>BIG092 AI Assistant</h4>
+  <textarea placeholder="Ask about Web3, memes, tokens, branding, or content..."></textarea>
+  <button>Ask AI</button>
+</div>
 
-      <div class="card">
-        <h3>Wallet-First Web3 Culture</h
+<footer>
+  © 2025 BIG092-SPACE · Built by †Ifenna†  
+  <br/>
+  <a href="https://x.com/BIG092BOA" target="_blank">X / Twitter</a>
+</footer>
+
+</body>
+</html>
